@@ -1,0 +1,21 @@
+.projects {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  gap: 30px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.card {
+  border: 1px solid #ddd;
+  padding: 25px;
+}
+
+.tech {
+  font-size: 14px;
+  color: gray;
+}
