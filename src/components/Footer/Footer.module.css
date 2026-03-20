@@ -1,0 +1,17 @@
+.footer {
+  background-color: #0e254f;
+}
+
+.footerWrapper {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 10%;
+  margin: 0 auto;
+  max-width: 1200px;
+  color: var(--color-white);
+}
+
+.footerMiddle a {
+  color: var(--color-white);
+  text-decoration: none;
+}

@@ -24,6 +24,9 @@ const Header = () => {
           <a href="#about" onClick={() => setMenuOpen(false)}>
             O mnie
           </a>
+          <a href="#skills" onClick={() => setMenuOpen(false)}>
+            Teechnologie
+          </a>
           <a href="#projects" onClick={() => setMenuOpen(false)}>
             Portfolio
           </a>
