@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "gatsby-plugin-react-i18next";
 import * as styles from "./Header.module.css";
 
 const Header = () => {
@@ -11,8 +12,9 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <div className={styles.logo}>RT Dev</div>
-
+        <Link to="/">
+          <div className={styles.logo}>RT Dev</div>
+        </Link>
         <button className={styles.hamburger} onClick={toggleMenu}>
           ☰
         </button>
@@ -25,7 +27,7 @@ const Header = () => {
             O mnie
           </a>
           <a href="#skills" onClick={() => setMenuOpen(false)}>
-            Teechnologie
+            Technologie
           </a>
           <a href="#projects" onClick={() => setMenuOpen(false)}>
             Portfolio
