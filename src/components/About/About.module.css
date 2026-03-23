@@ -63,6 +63,26 @@
   animation-delay: 0.4s;
 }
 
+/* .item {
+  will-change: transform;
+}
+
+.item:hover {
+  animation: wave 0.5s ease;
+} */
+
+/* @keyframes wave {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.07);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+} */
+
 .item:nth-child(1) {
   animation-delay: 0.5s;
 }

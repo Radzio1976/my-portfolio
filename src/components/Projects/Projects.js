@@ -1,9 +1,7 @@
-import React from "react";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { Link, useI18next, useTranslation } from "gatsby-plugin-react-i18next";
+import React, { useEffect, useRef, useState } from "react";
+import { Link } from "gatsby-plugin-react-i18next";
 import * as styles from "./Projects.module.css";
 import atmaBank from "../../images/portfolio/atma_bank.jpg";
-import cats from "../../images/portfolio/cats.jpg";
 import tlenoterapia from "../../images/portfolio/tlenoterapia.jpg";
 import pralniaCytrynka from "../../images/portfolio/pralnia_cytrynka.jpg";
 const projects = [
@@ -31,14 +29,37 @@ const projects = [
 ];
 
 const Projects = () => {
+  const ref = useRef();
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+        } else {
+          setVisible(false); // 👈 RESET
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    observer.observe(ref.current);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="projects" className={styles.projects}>
-      <h2>Portfolio</h2>
+    <section id="projects" ref={ref} className={styles.projects}>
+      <h2 className={styles.projectsTitle}>Portfolio</h2>
 
       <div className={styles.grid}>
         {projects.map((project, i) => {
           return i % 2 === 0 ? (
-            <div key={project.title} className={styles.card}>
+            <div
+              key={project.title}
+              className={`${styles.card} ${styles.reveal} ${visible ? styles.revealActive : ""}`}
+            >
               <div className={styles.image}>
                 <img src={project.image} alt="" />
               </div>
@@ -52,7 +73,10 @@ const Projects = () => {
               </div>
             </div>
           ) : (
-            <div key={project.title} className={styles.card}>
+            <div
+              key={project.title}
+              className={`${styles.card} ${styles.reveal} ${visible ? styles.revealActive : ""}`}
+            >
               <div className={styles.description}>
                 <h2>{project.title}</h2>
                 <p>{project.description}</p>

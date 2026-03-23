@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as styles from "./Skills.module.css";
 import reactIcon from "../../images/technology_icons/react.png";
 import gatsbyIcon from "../../images/technology_icons/gatsby.png";
@@ -20,22 +20,35 @@ const skills = [
   seoPerformanceMarketing,
 ];
 
-// const skills = [
-//   "React",
-//   "Gatsby",
-//   "JavaScript",
-//   "GraphQL",
-//   "HTML",
-//   "CSS",
-//   "Responsive Design",
-//   "Performance Optimization",
-// ];
-
 const Skills = () => {
+  const ref = useRef();
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+        } else {
+          setVisible(false); // 👈 RESET
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    observer.observe(ref.current);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="skills" className={styles.skills}>
-      <h2>Technologie</h2>
-      <p>
+    <section id="skills" ref={ref} className={styles.skills}>
+      <h2
+        className={`${styles.skillsTitle} ${styles.reveal} ${visible ? styles.revealActive : ""}`}
+      >
+        Technologie
+      </h2>
+      <p className={`${styles.reveal} ${visible ? styles.revealActive : ""}`}>
         Na co dzień operuję wieloma technologiami, które umożliwiają mi
         tworzenie różnorodnych i ciekawych rozwiązań na stronach. Buduję strony
         zarówno od podstaw jak i z gotowych szblonów.
@@ -43,7 +56,10 @@ const Skills = () => {
 
       <div className={styles.grid}>
         {skills.map((skill) => (
-          <div key={skill} className={styles.skill}>
+          <div
+            key={skill}
+            className={`${styles.skill} ${styles.reveal} ${visible ? styles.revealActive : ""}`}
+          >
             <img src={skill} alt="" />
           </div>
         ))}
