@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as styles from "./Contact.module.css";
 
 const Contact = () => {
@@ -6,6 +6,26 @@ const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+
+  const ref = useRef();
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+        } else {
+          setVisible(false); // 👈 RESET
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    observer.observe(ref.current);
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,10 +46,16 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className={styles.contact}>
-      <h2>Kontakt</h2>
+    <section id="contact" ref={ref} className={styles.contact}>
+      <h2
+        className={`${styles.contactTitle} ${styles.reveal} ${visible ? styles.revealActive : ""}`}
+      >
+        Kontakt
+      </h2>
       <div className={styles.contactWrapper}>
-        <div className={styles.contactData}>
+        <div
+          className={`${styles.contactData} ${styles.reveal} ${visible ? styles.revealActive : ""}`}
+        >
           <h3>Znajdź najlepszą opcję dla siebie lub swojej firmy</h3>
           <h3>Radosław Tomaszewski</h3>
           <h3>Tel. +48 509 998 279</h3>
@@ -37,7 +63,9 @@ const Contact = () => {
             <a href="mailto:r.tomaszewski@gmail.com">r.tomaszewski@gmail.com</a>
           </h3>
         </div>
-        <div className={styles.contactForm}>
+        <div
+          className={`${styles.contactForm} ${styles.reveal} ${visible ? styles.revealActive : ""}`}
+        >
           {sent && <p className={styles.success}>Wiadomość została wysłana!</p>}
 
           <form

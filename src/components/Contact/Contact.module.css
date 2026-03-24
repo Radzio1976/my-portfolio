@@ -4,6 +4,31 @@
   max-width: 1200px;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.revealActive {
+  animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.contactTitle {
+  font-size: clamp(24px, 3vw, 32px);
+  animation-delay: 0.1s;
+}
+
 .contactWrapper {
   display: flex;
   justify-content: space-between;
@@ -13,6 +38,7 @@
   width: 50%;
   text-align: left;
   padding-right: 10px;
+  animation-delay: 0.3s;
 }
 
 .contactData h3:first-child {
@@ -26,6 +52,7 @@
 .contactForm {
   width: 50%;
   padding-left: 10px;
+  animation-delay: 0.5s;
 }
 
 .success {
@@ -91,4 +118,23 @@ button {
 
 button:hover {
   background: #1d4ed8;
+}
+
+@media (max-width: 800px) {
+  .contactWrapper {
+    flex-direction: column;
+  }
+
+  .contactData {
+    width: 100%;
+    text-align: center;
+    order: 2;
+  }
+
+  .contactForm {
+    width: 100%;
+    padding-left: 0;
+    order: 1;
+    margin-bottom: 50px;
+  }
 }
