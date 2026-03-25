@@ -47,6 +47,10 @@
   text-decoration: none;
 }
 
+.footerMenu a {
+  margin-bottom: 10px;
+}
+
 .footerDesignedBy {
   display: flex;
   justify-content: center;
@@ -72,5 +76,15 @@
     margin: 0 auto;
     margin-bottom: 20px;
     text-align: center;
+  }
+
+  .footerAbout h2,
+  .footerMenu h2,
+  .footerAddress h2 {
+    margin-bottom: 20px;
+  }
+
+  .footerMenu a {
+    margin-bottom: 10px;
   }
 }

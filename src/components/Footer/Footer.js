@@ -9,8 +9,9 @@ const Footer = () => {
         <div className={styles.footerAbout}>
           <h2>O mnie</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-            tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+            Pomagam firmom budować szybkie, nowoczesne strony internetowe, które
+            nie tylko dobrze wyglądają, ale też realnie wspierają rozwój
+            biznesu.
           </p>
         </div>
         <div className={styles.footerMenu}>
