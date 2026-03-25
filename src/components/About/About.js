@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as styles from "./About.module.css";
+import AnimatedElements from "../../hooks/AnimatedElements";
 
 const About = () => {
   const ref = useRef();
   const [visible, setVisible] = useState(false);
+  AnimatedElements(setVisible, ref);
 
   useEffect(() => {
     const observer = new IntersectionObserver(

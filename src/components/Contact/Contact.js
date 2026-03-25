@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as styles from "./Contact.module.css";
+import AnimatedElements from "../../hooks/AnimatedElements";
 
 const Contact = () => {
   const [sent, setSent] = useState(false);
@@ -9,40 +10,35 @@ const Contact = () => {
 
   const ref = useRef();
   const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-        } else {
-          setVisible(false); // 👈 RESET
-        }
-      },
-      { threshold: 0.1 },
-    );
-
-    observer.observe(ref.current);
-
-    return () => observer.disconnect();
-  }, []);
+  AnimatedElements(setVisible, ref);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const data = { name, email, message };
-    console.log(data);
-    await fetch("/.netlify/functions/contact.js", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    setSent(true);
-    setName("");
-    setEmail("");
-    setMessage("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+
+      if (result.success) {
+        setSent(true);
+        setName("");
+        setEmail("");
+        setMessage("");
+      } else {
+        console.error("Błąd wysyłki");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (

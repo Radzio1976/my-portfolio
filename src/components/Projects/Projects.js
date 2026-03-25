@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "gatsby-plugin-react-i18next";
 import * as styles from "./Projects.module.css";
+import AnimatedElements from "../../hooks/AnimatedElements";
 import atmaBank from "../../images/portfolio/atma_bank.jpg";
 import tlenoterapia from "../../images/portfolio/tlenoterapia.jpg";
 import pralniaCytrynka from "../../images/portfolio/pralnia_cytrynka.jpg";
@@ -31,27 +32,15 @@ const projects = [
 const Projects = () => {
   const ref = useRef();
   const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-        } else {
-          setVisible(false); // 👈 RESET
-        }
-      },
-      { threshold: 0.1 },
-    );
-
-    observer.observe(ref.current);
-
-    return () => observer.disconnect();
-  }, []);
+  AnimatedElements(setVisible, ref);
 
   return (
     <section id="projects" ref={ref} className={styles.projects}>
-      <h2 className={styles.projectsTitle}>Portfolio</h2>
+      <h2
+        className={`${styles.projectsTitle} ${styles.reveal} ${visible ? styles.revealActive : ""}`}
+      >
+        Portfolio
+      </h2>
 
       <div className={styles.grid}>
         {projects.map((project, i) => {

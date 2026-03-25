@@ -13,16 +13,16 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.container}>
         <Link to="/">
-          <div className={styles.logo}>RT Dev</div>
+          <div className={styles.logo}>atma code</div>
         </Link>
         <button className={styles.hamburger} onClick={toggleMenu}>
           ☰
         </button>
 
         <nav className={`${styles.nav} ${menuOpen ? styles.open : ""}`}>
-          <a href="#home" onClick={() => setMenuOpen(false)}>
+          <Link to="/" onClick={() => setMenuOpen(false)}>
             Home
-          </a>
+          </Link>
           <a href="#about" onClick={() => setMenuOpen(false)}>
             O mnie
           </a>

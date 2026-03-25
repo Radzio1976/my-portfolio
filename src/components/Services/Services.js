@@ -1,27 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as styles from "./Services.module.css";
-import AnimatedBackground from "../AnimatedBackground";
+import AnimatedElements from "../../hooks/AnimatedElements";
+import AnimatedBackground from "../../hooks/AnimatedBackground";
 
 const Services = () => {
   const ref = useRef();
   const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-        } else {
-          setVisible(false); // 👈 RESET
-        }
-      },
-      { threshold: 0.1 },
-    );
-
-    observer.observe(ref.current);
-
-    return () => observer.disconnect();
-  }, []);
+  AnimatedElements(setVisible, ref);
 
   return (
     <section id="services" ref={ref} className={styles.services}>

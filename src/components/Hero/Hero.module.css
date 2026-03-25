@@ -13,23 +13,6 @@
     rgba(32, 77, 168, 1) 50%
   );
   overflow: hidden;
-  animation: heroFade 1s ease forwards;
-}
-
-.hero > * {
-  position: relative;
-  z-index: 2;
-}
-
-@keyframes heroFade {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .container {
@@ -40,13 +23,31 @@
   gap: 20px;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.revealActive {
+  animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
 .image {
   width: 50%;
   display: flex;
   justify-content: left;
-  animation: heroFade 1s ease forwards;
-  animation-delay: 0.3s;
-  opacity: 0;
+  animation-delay: 0.1s;
 }
 
 .image img {
@@ -55,9 +56,6 @@
   height: auto;
   filter: drop-shadow(0 0 40px rgba(59, 130, 246, 0.9))
     drop-shadow(0 0 80px rgba(59, 130, 246, 0.6));
-  transform: scale(0.95);
-  animation: heroFade 1s ease forwards;
-  animation-delay: 0.3s;
 }
 
 .slogan {
@@ -65,42 +63,25 @@
   text-align: left;
 }
 
-.slogan h1 {
+.sloganTitle {
   font-size: clamp(28px, 4.5vw, 48px);
   line-height: 1.2;
   margin-bottom: 20px;
-  animation: heroFade 0.8s ease forwards;
-  animation-delay: 0.2s;
-  opacity: 0;
+  animation-delay: 0.3s;
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.slogan p {
+.sloganText {
   font-size: clamp(16px, 1.6vw, 20px);
   line-height: 1.6;
   margin-bottom: 30px;
-  animation: heroFade 0.8s ease forwards;
-  animation-delay: 0.4s;
-  opacity: 0;
+  animation-delay: 0.5s;
 }
 
 .buttons {
   display: flex;
   gap: 15px;
   margin-top: clamp(20px, 3vw, 40px);
-  animation: heroFade 0.8s ease forwards;
-  animation-delay: 0.6s;
-  opacity: 0;
+  animation-delay: 0.7s;
 }
 
 .primary,

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as styles from "./Skills.module.css";
+import AnimatedElements from "../../hooks/AnimatedElements";
 import reactIcon from "../../images/technology_icons/react.png";
 import gatsbyIcon from "../../images/technology_icons/gatsby.png";
 import javaScriptIcon from "../../images/technology_icons/javascript.png";
@@ -23,6 +24,7 @@ const skills = [
 const Skills = () => {
   const ref = useRef();
   const [visible, setVisible] = useState(false);
+  AnimatedElements(setVisible, ref);
 
   useEffect(() => {
     const observer = new IntersectionObserver(

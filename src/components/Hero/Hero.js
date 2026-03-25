@@ -1,25 +1,39 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import * as styles from "./Hero.module.css";
 import heroImage from "../../images/hero_image.png";
-import AnimatedBackground from "../AnimatedBackground";
+import AnimatedElements from "../../hooks/AnimatedElements";
+import AnimatedBackground from "../../hooks/AnimatedBackground";
 
 const Hero = () => {
+  const ref = useRef();
+  const [visible, setVisible] = useState(false);
+  AnimatedElements(setVisible, ref);
   return (
-    <section id="home" className={styles.hero}>
+    <section id="home" ref={ref} className={styles.hero}>
       <AnimatedBackground />
       <div className={styles.container}>
-        <div className={styles.image}>
+        <div
+          className={`${styles.image} ${styles.reveal} ${visible ? styles.revealActive : ""}`}
+        >
           <img src={heroImage} alt=""></img>
         </div>
         <div className={styles.slogan}>
-          <h1>Tworzę szybkie i nowoczesne strony internetowe</h1>
+          <h1
+            className={`${styles.sloganTitle} ${styles.reveal} ${visible ? styles.revealActive : ""}`}
+          >
+            Tworzę szybkie i nowoczesne strony internetowe
+          </h1>
 
-          <p>
+          <p
+            className={`${styles.sloganText} ${styles.reveal} ${visible ? styles.revealActive : ""}`}
+          >
             Specjalizuję się w stronach opartych o React i Gatsby. Pomagam
             firmom tworzyć szybkie i responsywne strony internetowe.
           </p>
 
-          <div className={styles.buttons}>
+          <div
+            className={`${styles.buttons} ${styles.reveal} ${visible ? styles.revealActive : ""}`}
+          >
             <a href="#projects" className={styles.primary}>
               Zobacz portfolio
             </a>

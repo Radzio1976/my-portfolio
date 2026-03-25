@@ -1,10 +1,10 @@
-const nodemailer = require("nodemailer");
+import nodemailer from "nodemailer";
 
-exports.handler = async function (event) {
+export default async function handler(req, res) {
   try {
     console.log("Function triggered");
 
-    const data = JSON.parse(event.body);
+    const data = req.body;
     console.log("Received data:", data);
 
     const transporter = nodemailer.createTransport({
@@ -24,16 +24,10 @@ exports.handler = async function (event) {
 
     console.log("Mail sent:", info.messageId);
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ success: true }),
-    };
+    return res.status(200).json({ success: true });
   } catch (error) {
     console.error("Mail error:", error);
 
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ success: false }),
-    };
+    return res.status(500).json({ success: false });
   }
-};
+}
