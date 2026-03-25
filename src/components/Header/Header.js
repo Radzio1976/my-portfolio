@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "gatsby-plugin-react-i18next";
 import * as styles from "./Header.module.css";
+import ClickOutside from "../../hooks/ClickOutside";
 
 const Header = () => {
+  const menuRef = useRef();
   const [menuOpen, setMenuOpen] = useState(false);
+  ClickOutside(setMenuOpen, menuRef);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -19,7 +22,10 @@ const Header = () => {
           ☰
         </button>
 
-        <nav className={`${styles.nav} ${menuOpen ? styles.open : ""}`}>
+        <nav
+          ref={menuRef}
+          className={`${styles.nav} ${menuOpen ? styles.open : ""}`}
+        >
           <Link to="/" onClick={() => setMenuOpen(false)}>
             Home
           </Link>

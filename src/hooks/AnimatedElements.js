@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 const AnimatedElements = (setVisible, ref) => {
   useEffect(() => {
