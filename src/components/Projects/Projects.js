@@ -23,9 +23,9 @@ const projects = [
   {
     title: "Pralnia Cytrynka w Ustroniu Morskim",
     description: "Prosta strona wizytówkowa dla małej firmy rodzinnej.",
-    tech: "React / Node / CSS",
+    tech: "React / Gatsby / Node / CSS",
     image: pralniaCytrynka,
-    link: "https://www.google.com",
+    link: "https://cytrynka-gatsby.vercel.app/",
   },
 ];
 
