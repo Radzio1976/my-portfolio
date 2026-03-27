@@ -11,7 +11,7 @@ const projects = [
     description: "Blog o tematyce rozwoju duchowego",
     tech: "Gatsby / React / CMS",
     image: atmaBank,
-    link: "https://www.atmabank.com.pl",
+    link: "https://www.atmabank.com/",
   },
   {
     title: "Prema O2 terapia tlenowa",
