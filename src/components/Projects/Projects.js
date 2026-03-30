@@ -18,7 +18,7 @@ const projects = [
     description: "Nowoczesna strona dla małej firmy usługowej.",
     tech: "React / Node / CSS",
     image: tlenoterapia,
-    link: "https://www.google.com",
+    link: "https://hyperbaric-chamber.onrender.com/",
   },
   {
     title: "Pralnia Cytrynka w Ustroniu Morskim",
