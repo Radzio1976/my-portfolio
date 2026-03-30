@@ -7,13 +7,6 @@ import tlenoterapia from "../../images/portfolio/tlenoterapia.jpg";
 import pralniaCytrynka from "../../images/portfolio/pralnia_cytrynka.jpg";
 const projects = [
   {
-    title: "Atma Bank",
-    description: "Blog o tematyce rozwoju duchowego",
-    tech: "Gatsby / React / CMS",
-    image: atmaBank,
-    link: "https://www.atmabank.com/",
-  },
-  {
     title: "Prema O2 terapia tlenowa",
     description: "Nowoczesna strona dla małej firmy usługowej.",
     tech: "React / Node / CSS",
@@ -26,6 +19,13 @@ const projects = [
     tech: "React / Gatsby / Node / CSS",
     image: pralniaCytrynka,
     link: "https://cytrynka-gatsby.vercel.app/",
+  },
+  {
+    title: "Atma Bank",
+    description: "Blog o tematyce rozwoju duchowego",
+    tech: "Gatsby / React / CMS",
+    image: atmaBank,
+    link: "https://www.atmabank.com/",
   },
 ];
 
