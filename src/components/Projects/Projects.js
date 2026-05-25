@@ -12,7 +12,7 @@ const projects = [
     description:
       "Responsywna strona dla sklepu oraz serwisu rowerowego w Kołobrzegu.",
     tech: "WordPress / CSS",
-    image: tlenoterapia,
+    image: k2Rowery,
     link: "https://k2rowery.pl/",
   },
   {
