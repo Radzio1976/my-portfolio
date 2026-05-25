@@ -2,10 +2,19 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "gatsby-plugin-react-i18next";
 import * as styles from "./Projects.module.css";
 import AnimatedElements from "../../hooks/AnimatedElements";
+import k2Rowery from "../../images/portfolio/k2rowery.jpg";
 import atmaBank from "../../images/portfolio/atma_bank.jpg";
 import tlenoterapia from "../../images/portfolio/tlenoterapia.jpg";
 import pralniaCytrynka from "../../images/portfolio/pralnia_cytrynka.jpg";
 const projects = [
+  {
+    title: "K2 Rowery Kołobrzeg",
+    description:
+      "Responsywna strona dla sklepu oraz serwisu rowerowego w Kołobrzegu.",
+    tech: "WordPress / CSS",
+    image: tlenoterapia,
+    link: "https://k2rowery.pl/",
+  },
   {
     title: "Prema O2 terapia tlenowa",
     description: "Nowoczesna strona dla małej firmy usługowej.",
